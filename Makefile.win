@@ -1,0 +1,42 @@
+# Project: morse
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = enlace.o funciones.o icrc.o icrc1.o morse.o $(RES)
+LINKOBJ  = enlace.o funciones.o icrc.o icrc1.o morse.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = morse.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before morse.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "morse.exe" $(LIBS)
+
+enlace.o: enlace.c
+	$(CC) -c enlace.c -o enlace.o $(CFLAGS)
+
+funciones.o: funciones.c
+	$(CC) -c funciones.c -o funciones.o $(CFLAGS)
+
+icrc.o: icrc.c
+	$(CC) -c icrc.c -o icrc.o $(CFLAGS)
+
+icrc1.o: icrc1.c
+	$(CC) -c icrc1.c -o icrc1.o $(CFLAGS)
+
+morse.o: morse.c
+	$(CC) -c morse.c -o morse.o $(CFLAGS)
